@@ -87,13 +87,11 @@ final class RandomStatusMiddleware implements MiddlewareInterface
     {
         $response = $handler->handle($request);
 
-        $currentStatus = $response->getStatusCode();
-
-        $statusCodesToPickFrom = array_filter(
+        $statusCodesToPickFrom = array_diff(
             self::STATUS_CODES_TO_PICK_FROM,
-            static function (int $statusCode) use ($currentStatus) : bool {
-                return $statusCode !== $currentStatus;
-            }
+            [
+                $response->getStatusCode()
+            ]
         );
 
         return $response->withStatus($statusCodesToPickFrom[random_int(0, count($statusCodesToPickFrom) - 1)]);

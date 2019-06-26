@@ -1,0 +1,34 @@
+{
+    "name": "asgrim/random-status-code-middleware",
+    "description": "Middleware to set a random status code",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Titcumb",
+            "email": "james@asgrim.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0,<7.4.0",
+        "psr/http-server-middleware": "^1.0",
+        "psr/http-message": "^1.0",
+        "psr/http-server-handler": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.2",
+        "doctrine/coding-standard": "^6.0",
+        "vimeo/psalm": "^3.4",
+        "zendframework/zend-diactoros": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Asgrim\\RandomStatusMiddleware\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AsgrimUnitTest\\RandomStatusMiddleware\\": "test/"
+        }
+    }
+}

@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use function array_filter;
+use function array_diff;
 use function count;
 use function random_int;
 
@@ -89,9 +89,7 @@ final class RandomStatusMiddleware implements MiddlewareInterface
 
         $statusCodesToPickFrom = array_diff(
             self::STATUS_CODES_TO_PICK_FROM,
-            [
-                $response->getStatusCode()
-            ]
+            [$response->getStatusCode()]
         );
 
         return $response->withStatus($statusCodesToPickFrom[random_int(0, count($statusCodesToPickFrom) - 1)]);

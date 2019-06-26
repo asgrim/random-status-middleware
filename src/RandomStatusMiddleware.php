@@ -96,6 +96,6 @@ final class RandomStatusMiddleware implements MiddlewareInterface
             }
         );
 
-        return $response->withStatus($statusCodesToPickFrom[random_int(0, count($statusCodesToPickFrom) - 1)]);
+        return $response->withStatus(array_rand($statusCodesToPickFrom));
     }
 }
